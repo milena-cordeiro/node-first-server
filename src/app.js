@@ -3,12 +3,15 @@ const express = require('express');
 const validateTeam = require('./middlewares/validateTeam');
 const existingId = require('./middlewares/existingId');
 const teams = require('./utils/teams');
+const apiCredentials = require('./middlewares/apiCredentials');
 
 let nextId = 3;
 
 const app = express();
 
 app.use(express.json());
+app.use(apiCredentials);
+
 // get usamos para pedir, buscar, algum dado;
 app.get('/', (request, response) => response.status(200).send({ message: 'olá mundo!' }));
 
